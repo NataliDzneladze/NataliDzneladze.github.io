@@ -1,0 +1,154 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name | Portfolio</title>
+  <meta name="description" content="Economics student portfolio – projects in forecasting, policy, and data analysis." />
+  <meta property="og:title" content="Your Name | Portfolio" />
+  <meta property="og:description" content="Projects in forecasting, policy, and data analysis." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Your Name</h1>
+      <p class="tagline">Economics & Data • Forecasting • Policy Analysis</p>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="intro" class="card">
+      <h2>Hi, I’m Your Name 👋</h2>
+      <p>
+        I study Economics and Management at Bocconi and focus on forecasting, macro policy,
+        and clear communication of analysis. I’ve worked with FPAS Mark II ideas, central bank
+        communication, and the monetary transmission mechanism.
+      </p>
+      <p>
+        This site highlights selected work: presentations, visualizations, and writing.
+      </p>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div class="grid">
+        <!-- Duplicate a .project block for each project -->
+        <article class="project">
+          <h3>Monetary Transmission Mechanism (Talk)</h3>
+          <p>20‑minute presentation connecting theory to policy using FPAS Mark II.
+          Slides and notes available.</p>
+          <p>
+            <a class="btn" href="#" target="_blank" rel="noopener">View slides</a>
+            <a class="btn outline" href="#" target="_blank" rel="noopener">Read script</a>
+          </p>
+        </article>
+        <article class="project">
+          <h3>Tariffs 2025 – Macro Impacts</h3>
+          <p>Short paper and charts on consumer prices, pass‑through, and scenarios.
+          Built in Python with reproducible code.</p>
+          <p>
+            <a class="btn" href="#" target="_blank" rel="noopener">Read article</a>
+            <a class="btn outline" href="#" target="_blank" rel="noopener">GitHub repo</a>
+          </p>
+        </article>
+        <article class="project">
+          <h3>FPAS Page Redesign</h3>
+          <p>Content strategy + wireframes for an FPAS Mark II‑aligned public webpage.
+          Includes rationale and before/after.</p>
+          <p>
+            <a class="btn" href="#" target="_blank" rel="noopener">Case study</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>
+        I’m interested in how transparent forecasting frameworks help policymakers avoid
+        past mistakes and communicate uncertainty. I enjoy building clear visuals and
+        lightweight web pages to make analysis accessible.
+      </p>
+      <ul class="bullets">
+        <li>Skills: Python (pandas, matplotlib), basic R, HTML/CSS, Figma</li>
+        <li>Topics: FPAS Mark II, expectations, policy transmission</li>
+        <li>Currently: Economics & Management @ Bocconi</li>
+      </ul>
+    </section>
+
+    <section id="cv" class="card">
+      <h2>CV</h2>
+      <p>
+        <a class="btn" href="/assets/cv.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
+        <a class="btn outline" href="/assets/cv.pdf" download>Download CV</a>
+      </p>
+      <p class="muted">Add your PDF as <code>/assets/cv.pdf</code>.</p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener">linkedin.com/in/yourhandle</a></p>
+      <p>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Your Name • Last updated <span id="updated"></span></small>
+    </div>
+  </footer>
+
+  <script>
+    // Year + Updated date stamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('updated').textContent = new Date().toISOString().slice(0,10);
+  </script>
+
+  <!-- Optional: Google Analytics v4 (paste your measurement ID) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script> -->
+</body>
+</html>
+
+<!-- /assets/styles.css (create folder assets and this file) -->
+/* Basic, clean styles */
+:root { --bg:#fafafa; --text:#222; --muted:#666; --card:#fff; --border:#e5e7eb; --brand:#0f59a4; }
+* { box-sizing: border-box; }
+body { margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); color:var(--text); }
+.container { width:min(100%, 980px); margin:auto; padding:0 20px; }
+.site-header { background:#fff; border-bottom:1px solid var(--border); padding:28px 0; position:sticky; top:0; z-index:10; }
+.site-header h1 { margin:0 0 6px; font-size:28px; letter-spacing:0.3px; }
+.tagline { margin:0 0 10px; color:var(--muted); }
+.nav a { margin-right:16px; text-decoration:none; color:var(--brand); font-weight:600; }
+.nav a:hover { text-decoration:underline; }
+main { padding:24px 0 60px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; margin:18px 0; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
+.project h3 { margin-top:0; }
+.btn { display:inline-block; padding:8px 14px; border-radius:10px; text-decoration:none; background:var(--brand); color:#fff; font-weight:600; margin-right:8px; border:1px solid transparent; }
+.btn:hover { opacity:0.95; }
+.btn.outline { background:transparent; color:var(--brand); border-color:var(--brand); }
+.bullets { padding-left:18px; }
+.muted { color:var(--muted); }
+.site-footer { border-top:1px solid var(--border); background:#fff; padding:18px 0; text-align:center; }
+
+/* Small screens */
+@media (max-width: 520px) {
+  .nav { display:flex; flex-wrap:wrap; gap:8px; }
+  .nav a { margin-right:0; }
+}
