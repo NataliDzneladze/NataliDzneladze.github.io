@@ -303,12 +303,13 @@ button:focus {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-/* HERO LAYOUT WITH PHOTO */
+/* HERO LAYOUT — tighter spacing + better alignment */
 .hero-layout {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
+  padding-top: 1rem;
   text-align: left;
 }
 
@@ -317,30 +318,36 @@ button:focus {
   flex: 1;
 }
 
-/* Hero photo styling */
+/* UPDATED PHOTO STYLE — square with soft rounded corners */
 .profile-photo {
-  width: 160px;        /* You can adjust to 150–200px */
-  height: 160px;
-  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 18px;  /* soft modern academic style */
   object-fit: cover;
   object-position: center;
   box-shadow: var(--shadow);
-  transition: transform .25s ease;
+  transition: transform .25s ease, box-shadow .25s ease;
+  margin-top: -1.5rem;  /* brings the image closer to your name */
 }
 
+/* Hover effect */
 .profile-photo:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
 }
 
-/* Mobile layout: stack vertically */
-@media (max-width: 700px) {
+/* MOBILE: centered, slightly smaller */
+@media (max-width: 850px) {
   .hero-layout {
     flex-direction: column;
     text-align: center;
+    gap: 1.8rem;
   }
 
   .profile-photo {
-    margin-top: 1rem;
+    width: 180px;
+    height: 180px;
+    margin-top: 0;
   }
 }
 
