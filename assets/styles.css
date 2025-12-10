@@ -1,60 +1,67 @@
 /* ============================================================
    NATALI DZNELADZE — PORTFOLIO THEME
-   Clean visual system + consistent palette + polished layout
+   Minimal academic design · Light/Dark mode · Smooth styling
    ============================================================ */
 
 /* ------------------ 1. Base Theme Tokens ------------------- */
 
 :root {
-  /* BRAND PALETTE */
-  --roman-coffee: #795d4c;   /* warm brown accent */
+  /* ORIGINAL PALETTE (unchanged) */
+  --roman-coffee: #795d4c;   /* warm brown */
   --flint: #6f6a61;          /* muted grey */
-  --cab-sav: #4d0a18;        /* deep burgundy accent */
-  --tamarind: #341515;       /* dark header text */
-  --napa: #e9e5df;           /* light-beige paper */
+  --cab-sav: #4d0a18;        /* burgundy */
+  --tamarind: #341515;       /* deep brown */
+  --napa: #e9e5df;           /* beige */
 
-  /* THEME ROLES */
+  /* CLEAN, IMPROVED ROLE ASSIGNMENTS */
+  --accent: var(--cab-sav);           /* primary accent (burgundy) */
+  --accent-soft: var(--roman-coffee); /* secondary warm accent */
+
   --bg: #ffffff;
+  --bg-alt: var(--napa);              /* section divider wash */
   --panel: #ffffff;
-  --ink: #1f1b1b;
-  --muted: var(--flint);
-  --line: #e4ded6;
 
-  /* RADIUS & SHADOW */
+  --text: #1f1b1b;
+  --text-muted: var(--flint);
+  --border: #e4ded6;
+
   --radius: 14px;
   --shadow: 0 8px 24px rgba(121, 93, 76, 0.08);
 
-  /* ACCENTS */
-  --brand: var(--roman-coffee);
-  --brand-2: var(--cab-sav);
+  --transition: 0.25s ease;
 }
 
 /* ------------------ 2. Dark Mode Tokens -------------------- */
 
 :root.dark {
-  --bg: #1f1616;
-  --panel: #271c1c;
-  --ink: #f2ebe4;
-  --muted: #d0c7bb;
-  --line: #3a2a2a;
+  --bg: #1a1414;
+  --panel: #241818;
+  --bg-alt: #2b1d1d;
 
-  --brand: var(--cab-sav);
-  --brand-2: var(--roman-coffee);
+  --text: #f5efeb;
+  --text-muted: #d0c7bb;
 
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  /* Accents invert subtly in dark mode */
+  --accent: var(--roman-coffee);
+  --accent-soft: var(--cab-sav);
+
+  --border: #3a2a2a;
+  --shadow: 0 8px 24px rgba(0, 0, 0, .45);
 }
 
 /* ------------------ 3. Global Layout ------------------------ */
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
 
-body {
-  font-family: Inter, system-ui, sans-serif;
+html, body {
+  margin: 0;
+  padding: 0;
   background: var(--bg);
-  color: var(--ink);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  transition: background var(--transition), color var(--transition);
 }
 
 .container {
@@ -72,9 +79,22 @@ body {
   left: 1rem;
   top: 1rem;
   padding: .5rem .75rem;
-  background: var(--brand);
+  background: var(--accent);
   color: #fff;
   border-radius: .5rem;
+}
+
+/* Smooth fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.7s ease forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 /* ------------------ 4. Header / Hero ------------------------- */
@@ -82,8 +102,8 @@ body {
 .site-header {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(to bottom, #ffffff, var(--napa));
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to bottom, #ffffff, var(--bg-alt));
 }
 
 .site-header .container {
@@ -100,7 +120,7 @@ body {
 }
 
 .tagline {
-  color: var(--muted);
+  color: var(--text-muted);
   margin: .3rem 0 1.4rem;
   font-size: 1.05rem;
 }
@@ -108,22 +128,23 @@ body {
 /* NAVIGATION */
 .nav {
   display: flex;
-  gap: 1rem;
   justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 1.2rem;
 }
 
 .nav a {
   text-decoration: none;
-  color: var(--ink);
+  color: var(--text);
   font-weight: 600;
   padding: .45rem .75rem;
   border-radius: .6rem;
-  transition: 0.2s ease;
+  transition: var(--transition);
 }
 
 .nav a:hover {
-  color: var(--brand-2);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -131,16 +152,18 @@ body {
 /* THEME TOGGLE */
 .theme-toggle {
   padding: .45rem .75rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: .6rem;
   background: var(--panel);
-  color: var(--ink);
+  color: var(--text);
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: var(--transition);
 }
-.theme-toggle:hover { box-shadow: var(--shadow); }
+.theme-toggle:hover {
+  box-shadow: var(--shadow);
+}
 
-/* HERO BACKGROUND */
+/* HERO BACKGROUND ART */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -148,27 +171,35 @@ body {
   background:
     radial-gradient(900px 360px at 30% -10%, rgba(121,93,76,.12), transparent 60%),
     radial-gradient(800px 300px at 90% 0%, rgba(77,10,24,.10), transparent 60%),
-    linear-gradient(to bottom, #ffffff, var(--napa));
+    linear-gradient(to bottom, #ffffff, var(--bg-alt));
 }
 
 :root.dark .hero-bg {
   background:
-    radial-gradient(900px 360px at 30% -10%, rgba(77,10,24,.22), transparent 60%),
-    radial-gradient(900px 360px at 110% 10%, rgba(121,93,76,.18), transparent 60%),
-    linear-gradient(to bottom, #2b1d1d, #1f1616);
+    radial-gradient(900px 360px at 30% -10%, rgba(77,10,24,.25), transparent 60%),
+    radial-gradient(900px 360px at 110% 10%, rgba(121,93,76,.25), transparent 60%),
+    linear-gradient(to bottom, #2b1d1d, #1a1414);
 }
 
-/* ------------------ 5. Cards & Sections ----------------------- */
+/* ------------------ 5. Sections / Cards ---------------------- */
 
-main.container { padding: 2.2rem 1.25rem; }
+main.container {
+  padding: 2.2rem 1.25rem;
+}
 
 .card {
   background: var(--panel);
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem 1.4rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.12);
 }
 
 h2 {
@@ -178,9 +209,12 @@ h2 {
   font-size: 1.7rem;
 }
 
-/* Bullet Lists */
-.bullets { padding-left: 1.2rem; }
-.bullets li { margin: .35rem 0; }
+.bullets {
+  padding-left: 1.2rem;
+}
+.bullets li {
+  margin: .35rem 0;
+}
 
 /* ------------------ 6. Articles Grid -------------------------- */
 
@@ -197,11 +231,11 @@ h2 {
 .project h3 {
   font-size: 1.15rem;
   margin: .1rem 0 .35rem;
-  color: var(--tamarind);
+  color: var(--accent);
 }
 
 .project p {
-  color: var(--muted);
+  color: var(--text-muted);
   margin: .25rem 0 .75rem;
 }
 
@@ -216,30 +250,32 @@ h2 {
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  background: var(--brand);
+  background: var(--accent);
   color: #fff;
   border: none;
-  transition: 0.18s ease-in-out;
-  box-shadow: 0 8px 22px rgba(121,93,76,.18);
+  transition: var(--transition);
+  box-shadow: 0 8px 22px rgba(77,10,24,.18);
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  background: var(--brand-2);
-  box-shadow: 0 10px 26px rgba(77,10,24,.26);
+  background: var(--accent-soft);
+  box-shadow: 0 10px 26px rgba(121,93,76,.26);
 }
 
-.btn.small { padding: .5rem .8rem; }
+.btn.small {
+  padding: .5rem .8rem;
+}
 
 .btn.outline {
   background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line);
+  color: var(--text);
+  border: 1px solid var(--border);
   box-shadow: none;
 }
 
 .btn.outline:hover {
-  background: var(--brand);
+  background: var(--accent);
   color: #fff;
   border-color: transparent;
   box-shadow: var(--shadow);
@@ -248,13 +284,13 @@ h2 {
 /* ------------------ 8. Footer ------------------------------- */
 
 .site-footer {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
   background: var(--panel);
   padding: 1rem 0;
 }
 
 .site-footer small {
-  color: var(--muted);
+  color: var(--text-muted);
   display: block;
   text-align: center;
   font-size: .85rem;
@@ -264,6 +300,6 @@ h2 {
 
 a:focus,
 button:focus {
-  outline: 2px solid var(--brand);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
