@@ -49,6 +49,13 @@
   --shadow: 0 8px 24px rgba(0, 0, 0, .45);
 }
 
+/* This must be OUTSIDE the block */
+:root.dark .brand {
+  color: #ffffff;
+}
+
+
+
 /* ------------------ 3. Global Layout ------------------------ */
 
 * { box-sizing: border-box; }
