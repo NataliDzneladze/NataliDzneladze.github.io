@@ -55,6 +55,11 @@
 }
 
 
+/* smooth scrolling*/
+
+html {
+  scroll-behavior: smooth;
+}
 
 /* ------------------ 3. Global Layout ------------------------ */
 
