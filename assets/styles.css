@@ -181,7 +181,55 @@ html, body {
     linear-gradient(to bottom, #2b1d1d, #1a1414);
 }
 
-/* ------------------ 5. Sections / Cards ---------------------- */
+/* ------------------ 5. FIXED HERO LAYOUT ---------------------- */
+
+/* FIX 1: Better alignment + spacing */
+.hero-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;     /* NEW — vertically aligns the title with photo */
+  gap: 2.5rem;
+  padding-top: 1rem;
+  text-align: left;
+}
+
+/* Left column text */
+.hero-text {
+  flex: 1;
+}
+
+/* FIX 2 & 3: Clean square image + centered crop + no margin hack */
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 0;         /* NEW — perfect square */
+  object-fit: cover;
+  object-position: center;  /* NEW — better portrait centering */
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover effect */
+.profile-photo:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+}
+
+/* MOBILE: centered, slightly smaller */
+@media (max-width: 850px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.8rem;
+  }
+
+  .profile-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* ------------------ 6. Sections / Cards ---------------------- */
 
 main.container {
   padding: 2.2rem 1.25rem;
@@ -216,7 +264,7 @@ h2 {
   margin: .35rem 0;
 }
 
-/* ------------------ 6. Articles Grid -------------------------- */
+/* ------------------ 7. Articles Grid -------------------------- */
 
 .grid {
   display: grid;
@@ -239,7 +287,7 @@ h2 {
   margin: .25rem 0 .75rem;
 }
 
-/* ------------------ 7. Buttons ------------------------------- */
+/* ------------------ 8. Buttons ------------------------------- */
 
 .btn {
   display: inline-flex;
@@ -281,7 +329,7 @@ h2 {
   box-shadow: var(--shadow);
 }
 
-/* ------------------ 8. Footer ------------------------------- */
+/* ------------------ 9. Footer ------------------------------- */
 
 .site-footer {
   border-top: 1px solid var(--border);
@@ -296,58 +344,12 @@ h2 {
   font-size: .85rem;
 }
 
-/* ------------------ 9. Focus States -------------------------- */
+/* ------------------ 10. Focus States -------------------------- */
 
 a:focus,
 button:focus {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-/* HERO LAYOUT — tighter spacing + better alignment */
-.hero-layout {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3rem;
-  padding-top: 1rem;
-  text-align: left;
-}
 
-/* Left column text */
-.hero-text {
-  flex: 1;
-}
-
-/* UPDATED PHOTO STYLE — square with soft rounded corners */
-.profile-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 18px;  /* soft modern academic style */
-  object-fit: cover;
-  object-position: left;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease, box-shadow .25s ease;
-  margin-top: -1.5rem;  /* brings the image closer to your name */
-}
-
-/* Hover effect */
-.profile-photo:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 28px rgba(0,0,0,.18);
-}
-
-/* MOBILE: centered, slightly smaller */
-@media (max-width: 850px) {
-  .hero-layout {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.8rem;
-  }
-
-  .profile-photo {
-    width: 180px;
-    height: 180px;
-    margin-top: 0;
-  }
-}
 
