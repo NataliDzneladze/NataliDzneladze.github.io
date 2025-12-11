@@ -49,9 +49,9 @@
   --shadow: 0 8px 24px rgba(0, 0, 0, .45);
 }
 
-/* This must be OUTSIDE the block */
+/* Ensures your name becomes visible in dark mode */
 :root.dark .brand {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 
